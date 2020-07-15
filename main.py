@@ -6,7 +6,6 @@ import wget
 import os
 from bs4 import BeautifulSoup
 import requests
-import string
 import re
 LG = LibgenSearch()
 filters = {}
@@ -20,7 +19,7 @@ root = Tk()
 root.geometry('{}x{}'.format(x, y))
 root.resizable(False, False)
 root.title("Books Downloader")
-root.iconbitmap("icon.ico")
+root.iconbitmap("./icon.ico")
 
 sw = 0
 var_type = IntVar()
@@ -73,10 +72,7 @@ def SearchClick():
             Searchresults=LG.search_title_filtered(BookTitle_entry.get(), filters)
         else:
             Searchresults=LG.search_title(BookTitle_entry.get())
-
-    print(Searchresults[0])
     lenght = len(Searchresults)
-    print(lenght)
     for i in Searchresults:
         Options.insert(lenght, str(i.get("Title")) + " - " + str(i.get("Extension")) + " - " + str(i.get('Size')))
         Options.update
@@ -90,6 +86,7 @@ def download():
     download_link = str(soup.find('a'))
     download_link = download_link[9:len(download_link) - 9]
     filename = wget.detect_filename(download_link)
+    print(filename)
     rename = str(re.sub('[<>.:/\'",?*]', '', str(Searchresults[0].get("Title"))) + "." + str(Searchresults[0].get("Extension")))
     wget.download(download_link, download_directory, bar=bar_progress)
     os.rename(download_directory + str(filename), str(download_directory + rename))
