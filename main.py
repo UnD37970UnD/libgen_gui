@@ -19,7 +19,7 @@ root = Tk()
 root.geometry('{}x{}'.format(x, y))
 root.resizable(False, False)
 root.title("Books Downloader")
-root.iconbitmap("./icon.ico")
+root.iconbitmap("icon.ico")
 
 sw = 0
 var_type = IntVar()
