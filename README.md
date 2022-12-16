@@ -9,3 +9,7 @@ python3 main.py
 
 And is done.
 
+# Screenshot
+![image](https://user-images.githubusercontent.com/46340124/207927119-2e3f5898-07b6-4255-97dd-463996a710cb.png)
+
+
